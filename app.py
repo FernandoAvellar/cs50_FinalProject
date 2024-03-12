@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from flask_session import Session
 from cs50 import SQL
 
@@ -31,12 +31,16 @@ db = SQL("sqlite:///database/database.db")
 @app.route("/")
 @app.route("/index")
 def index():
-	return render_template("index.html")
+	return render_template("layout.html")
 
 @app.route("/list")
 def list():
 	sheets = db.execute("SELECT * FROM cifras")
-	return render_template("index.html", sheets=sheets)
+	return render_template("list.html", sheets=sheets)
+
+@app.route("/insert", methods=["GET", "POST"])
+def insert():
+    return render_template("insert.html", sessions = SESSOES_DA_MISSA.values())
 
 if __name__ == '__main__':
 	app.run(debug=True)
