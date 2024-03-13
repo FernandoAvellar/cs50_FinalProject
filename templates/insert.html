@@ -2,37 +2,39 @@
 main %}
 
 <form action="/insert" method="post">
-  <div
-    class="m-4 p-2 w-8 h-10 mx-auto flex flex-row items-center justify-center"
-  >
+  <div class="flex flex-row items-center mx-auto w-2/3">
     <input
       autocomplete="off"
-      class="mx-auto w-auto"
+      class="border-solid border-2 border-gray-900 p-1"
       min="0"
-      name="nome"
+      name="name"
       placeholder="Music Name"
       type="text"
     />
-    <select class="mx-auto w-auto p-2" name="session">
+    <select
+      class="mx-auto w-auto border-solid border-2 border-gray-900 p-1"
+      name="session"
+    >
       <option disabled selected>Session</option>
       {% for session in sessions %}
       <option value="{{session}}">{{session}}</option>
       {% endfor %}
     </select>
     <button
-      class="m-4 p-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-3.5 py-2.5 text-center"
       type="submit"
     >
       Insert
     </button>
   </div>
-  <div class="m-4">
+  <div class="mt-4">
     <textarea
-      class="mx-auto w-auto border-blue-400"
+      class="border-solid border-2 border-gray-900 p-1"
       autofocus
       autocomplete="off"
-      name="texto"
-      rows="50"
+      name="music_sheet"
+      placeholder="Paste here Music Sheet"
+      rows="30"
       cols="80"
     ></textarea>
   </div>

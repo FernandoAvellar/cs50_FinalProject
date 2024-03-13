@@ -40,7 +40,16 @@ def list():
 
 @app.route("/insert", methods=["GET", "POST"])
 def insert():
-    return render_template("insert.html", sessions = SESSOES_DA_MISSA.values())
+    if request.method == "POST":
+        nome = request.form.get("name")
+        sessao = request.form.get("session")
+        cifra = request.form.get("music_sheet")
+
+        db.execute("INSERT INTO cifras (nome, sessao, cifra) VALUES(?, ?, ?)", nome, sessao, cifra)
+
+        return redirect('/')
+    else:
+        return render_template("insert.html", sessions = SESSOES_DA_MISSA.values())
 
 if __name__ == '__main__':
 	app.run(debug=True)
