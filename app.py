@@ -66,14 +66,17 @@ def insert():
 def filtered_list():
     selected_filters = []
     if request.method == "POST":
+        #Get filters selected
         for section in SESSOES_DA_MISSA.values():
              if request.form.get(section): 
                 selected_filters.append(section) 
-        str_selec_filters = ','.join(f"{elemento}" for elemento in selected_filters)
-        str_selec_filters = '('.join(f"str_selec_filters)")
-        print(str_selec_filters)
-        sheets = db.execute("SELECT * FROM cifras WHERE sessao in (?)", selected_filters)
-        print(sheets)
+        # If there is any selected filter, format message and query database
+        if(selected_filters):
+            ','.join(f"{elemento}" for elemento in selected_filters)
+            '('.join(f"str_selec_filters)")
+            sheets = db.execute("SELECT * FROM cifras WHERE sessao in (?)", selected_filters)
+        else:
+             sheets = db.execute("SELECT * FROM cifras")
         
         return render_template("filter.html", sheets=sheets, sessions = SESSOES_DA_MISSA.values())
     else:
