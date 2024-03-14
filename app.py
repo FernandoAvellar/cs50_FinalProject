@@ -6,15 +6,15 @@ from cs50 import SQL
 SESSOES_DA_MISSA = {
     1:  "Aclamação",
     2:  "Amém",
-    3:  "Comunhão",
-    4:  "Cordeiro",
-    5:  "Consagração",
-    6:  "Entrada",
-    7:  "Geral",
-    8:  "Glória",
-    9:  "Santo",
-    10:  "Saída",
-    11: "Perdão",
+    3:  "Ato penitencial",
+    4:  "Comunhão",
+    5:  "Cordeiro",
+    6:  "Consagração",
+    7:  "Entrada",
+    8:  "Geral",
+    9:  "Glória",
+    10: "Santo",
+    11: "Saída",
     12: "Paz",
     13: "Ofertório"
 }
@@ -67,18 +67,20 @@ def filtered_list():
     selected_filters = []
     if request.method == "POST":
         for section in SESSOES_DA_MISSA.values():
-             if request.form.get(section):
+             if request.form.get(section): 
                 selected_filters.append(section) 
-        print(selected_filters)
-        return redirect('/filtered_list')
+        str_selec_filters = ','.join(f"{elemento}" for elemento in selected_filters)
+        str_selec_filters = '('.join(f"str_selec_filters)")
+        print(str_selec_filters)
+        sheets = db.execute("SELECT * FROM cifras WHERE sessao in (?)", selected_filters)
+        print(sheets)
+        
+        return render_template("filter.html", sheets=sheets, sessions = SESSOES_DA_MISSA.values())
     else:
         sheets = db.execute("SELECT * FROM cifras")
         return render_template("filter.html", sheets=sheets, sessions = SESSOES_DA_MISSA.values())
-    
-# sheets = db.execute("SELECT * FROM cifras WHERE session = ?", filter_session)
    
             
-
 
 
 

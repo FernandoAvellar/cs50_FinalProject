@@ -1,10 +1,11 @@
 {% extends "layout.html" %} {% block title %} Insert {% endblock %} {% block
 main %}
 
-<form action="/insert" method="post">
+<form action="/insert" method="post" class="mt-4">
   <div class="grid grid-cols-2 gap-2 justify-items-center mx-auto w-2/3">
     <input
       autocomplete="off"
+      autofocus
       class="border-solid border-2 border-gray-800 p-1"
       min="0"
       name="name"
@@ -21,16 +22,15 @@ main %}
       {% endfor %}
     </select>
     <textarea
-      class="col-span-2 border-solid border-2 border-gray-800 p-1 mt-4"
-      autofocus
+      class="col-span-2 border-solid border-2 border-gray-800 p-1 mt-2"
       autocomplete="off"
       name="music_sheet"
       placeholder="Music Sheet"
-      rows="25"
+      rows="22"
       cols="100"
     ></textarea>
     <button
-      class="col-span-2 mt-4 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg px-8 py-3 text-center"
+      class="col-span-2 mt-2 mb-2 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg px-8 py-2.5 text-center"
       type="submit"
     >
       Insert
