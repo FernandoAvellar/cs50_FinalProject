@@ -8,6 +8,10 @@
       Catholic sheet music organizer: {% block title %}{% endblock %}
     </title>
     <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='favicon.ico') }}"
+    />
+    <link
       rel="stylesheet"
       href="{{url_for('static',filename='dist/css/output.css')}}"
     />
@@ -24,7 +28,7 @@
           <a href="/" class="flex items-center">
             <img
               src="/static/header_icon.png"
-              class="mr-3 h-6 sm:h-9"
+              class="mr-3 size-12 md:size-16"
               alt="Flowbite Logo"
             />
             <span
