@@ -1,4 +1,4 @@
-{% extends "layout.html" %} {% block title %} List all {% endblock %} {% block
+{% extends "layout.html" %} {% block title %} - List all {% endblock %} {% block
 main %}
 <section class="container bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
   <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
@@ -8,9 +8,9 @@ main %}
           class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
         >
           <tr>
-            <th scope="col" class="px-4 py-3">Number</th>
-            <th scope="col" class="px-4 py-3">Name</th>
-            <th scope="col" class="px-4 py-3">Session</th>
+            <th scope="col" class="px-4 py-3 dark:text-white">Number</th>
+            <th scope="col" class="px-4 py-3 dark:text-white">Name</th>
+            <th scope="col" class="px-4 py-3 dark:text-white">Session</th>
           </tr>
         </thead>
         <tbody>
@@ -19,7 +19,9 @@ main %}
             <td class="px-4 py-3">{{ sheet['id'] }}</td>
             <td class="px-4 py-3">{{ sheet['nome'] }}</td>
             <td class="px-4 py-3">{{ sheet['sessao'] }}</td>
-            <td class="px-4 py-3 flex items-center justify-end"></td>
+            <td
+              class="px-4 py-3 flex items-center justify-end dark:text-white"
+            ></td>
           </tr>
           {% endfor %}
         </tbody>

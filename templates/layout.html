@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+      // Script to activate tailwind dark class according user or browser preference
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Catholic sheet music organizer: {% block title %}{% endblock %}
-    </title>
+    <title>Music Organizer {% block title %}{% endblock %}</title>
     <link
       rel="shortcut icon"
       href="{{ url_for('static', filename='favicon.ico') }}"
@@ -18,9 +28,11 @@
   </head>
 
   <body>
-    <div class="container text-center mx-auto items-center bg-gray-50">
+    <div
+      class="container text-center mx-auto items-center bg-gray-50 dark:bg-gray-800"
+    >
       <nav
-        class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900"
+        class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800"
       >
         <div
           class="container flex flex-wrap justify-between items-center mx-auto"
@@ -28,15 +40,47 @@
           <a href="/" class="flex items-center">
             <img
               src="/static/header_icon.png"
-              class="mr-3 size-12 md:size-16"
-              alt="Flowbite Logo"
+              class="mr-3 size-10 md:size-12 lg:size-16"
+              alt="Site Logo"
             />
             <span
-              class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
-              >Catholic Sheet Music Organizer</span
+              class="self-center text-lg font-semibold whitespace-nowrap dark:text-white"
+              >Sheet Music Organizer</span
             >
           </a>
           <div class="flex md:order-2">
+            <button
+              id="theme-toggle"
+              type="button"
+              class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+            >
+              <svg
+                id="theme-toggle-dark-icon"
+                class="hidden size-6"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                ></path>
+              </svg>
+              <svg
+                id="theme-toggle-light-icon"
+                class="hidden size-6"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <div class="flex md:hidden w-full mt-2">
             <button
               data-collapse-toggle="navbar-cta"
               type="button"
@@ -46,7 +90,7 @@
             >
               <span class="sr-only">Open main menu</span>
               <svg
-                class="w-6 h-6"
+                class="size-6"
                 aria-hidden="true"
                 fill="currentColor"
                 viewBox="0 0 20 20"
@@ -65,12 +109,12 @@
             id="navbar-cta"
           >
             <ul
-              class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+              class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-800 dark:border-gray-700"
             >
               <li>
                 <a
                   href="/list"
-                  class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+                  class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0"
                   aria-current="page"
                   >List all</a
                 >
@@ -78,21 +122,21 @@
               <li>
                 <a
                   href="/filtered_list"
-                  class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                  >List for session</a
+                  class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  >List by session</a
                 >
               </li>
               <li>
                 <a
                   href="/insert"
-                  class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                   >Insert sheet music</a
                 >
               </li>
               <li>
                 <a
                   href="/generate"
-                  class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                   >Generate repertorie</a
                 >
               </li>
@@ -101,7 +145,152 @@
         </div>
       </nav>
       <main>{% block main %}{% endblock %}</main>
+      <footer
+        class="bg-white rounded-lg shadow sm:flex sm:items-center sm:justify-between p-4 sm:p-6 xl:p-8 dark:bg-gray-800 antialiased"
+      >
+        <p
+          class="mb-4 text-sm text-center text-gray-500 dark:text-gray-400 sm:mb-0"
+        >
+          &copy; 2024
+          <a href="#" class="hover:underline" target="_blank"
+            >Catholic Sheet Music Organizer</a
+          >. All rights reserved.
+        </p>
+        <div class="flex justify-center items-center space-x-1">
+          <a
+            href="#"
+            data-tooltip-target="tooltip-facebook"
+            class="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600"
+          >
+            <svg
+              class="w-4 h-4"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 8 19"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span class="sr-only">Facebook</span>
+          </a>
+          <div
+            id="tooltip-facebook"
+            role="tooltip"
+            class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
+          >
+            Like me on Facebook
+            <div class="tooltip-arrow" data-popper-arrow></div>
+          </div>
+          <a
+            href="#"
+            data-tooltip-target="tooltip-twitter"
+            class="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600"
+          >
+            <svg
+              class="w-4 h-4"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill="currentColor"
+                d="M12.186 8.672 18.743.947h-2.927l-5.005 5.9-4.44-5.9H0l7.434 9.876-6.986 8.23h2.927l5.434-6.4 4.82 6.4H20L12.186 8.672Zm-2.267 2.671L8.544 9.515 3.2 2.42h2.2l4.312 5.719 1.375 1.828 5.731 7.613h-2.2l-4.699-6.237Z"
+              />
+            </svg>
+            <span class="sr-only">Twitter</span>
+          </a>
+          <div
+            id="tooltip-twitter"
+            role="tooltip"
+            class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
+          >
+            Follow me on Twitter
+            <div class="tooltip-arrow" data-popper-arrow></div>
+          </div>
+          <a
+            href="#"
+            data-tooltip-target="tooltip-github"
+            class="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600"
+          >
+            <svg
+              class="w-4 h-4"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span class="sr-only">Github</span>
+          </a>
+          <div
+            id="tooltip-github"
+            role="tooltip"
+            class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
+          >
+            Star me on GitHub
+            <div class="tooltip-arrow" data-popper-arrow></div>
+          </div>
+        </div>
+      </footer>
       <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+      <script>
+        var themeToggleDarkIcon = document.getElementById(
+          "theme-toggle-dark-icon"
+        );
+        var themeToggleLightIcon = document.getElementById(
+          "theme-toggle-light-icon"
+        );
+
+        // Change the icons inside the button based on previous settings
+        if (
+          localStorage.getItem("color-theme") === "dark" ||
+          (!("color-theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          themeToggleLightIcon.classList.remove("hidden");
+        } else {
+          themeToggleDarkIcon.classList.remove("hidden");
+        }
+
+        var themeToggleBtn = document.getElementById("theme-toggle");
+
+        themeToggleBtn.addEventListener("click", function () {
+          // toggle icons inside button
+          themeToggleDarkIcon.classList.toggle("hidden");
+          themeToggleLightIcon.classList.toggle("hidden");
+
+          // if set via local storage previously
+          if (localStorage.getItem("color-theme")) {
+            if (localStorage.getItem("color-theme") === "light") {
+              document.documentElement.classList.add("dark");
+              localStorage.setItem("color-theme", "dark");
+            } else {
+              document.documentElement.classList.remove("dark");
+              localStorage.setItem("color-theme", "light");
+            }
+
+            // if NOT set via local storage previously
+          } else {
+            if (document.documentElement.classList.contains("dark")) {
+              document.documentElement.classList.remove("dark");
+              localStorage.setItem("color-theme", "light");
+            } else {
+              document.documentElement.classList.add("dark");
+              localStorage.setItem("color-theme", "dark");
+            }
+          }
+        });
+      </script>
     </div>
   </body>
 </html>

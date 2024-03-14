@@ -1,5 +1,6 @@
-{% extends "layout.html" %} {% block title %} Session list {% endblock %} {%
-block main %}
+{% extends "layout.html" %} {% block title %} - Session list {% endblock %}
+{%block main %}
+
 <section class="container bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
   <form action="/filtered_list" method="post">
     <button
@@ -11,7 +12,7 @@ block main %}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
-        class="h-4 w-4 mr-2 text-gray-400"
+        class="h-4 w-4 mr-2 text-gray-400 dark:text-white"
         viewbox="0 0 20 20"
         fill="currentColor"
       >
@@ -21,9 +22,9 @@ block main %}
           clip-rule="evenodd"
         />
       </svg>
-      Session Filter
+      <span class="dark:text-white">Session Filter</span>
       <svg
-        class="-mr-1 ml-1.5 w-5 h-5"
+        class="-mr-1 ml-1.5 w-5 h-5 dark:text-white"
         fill="currentColor"
         viewbox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
@@ -74,9 +75,9 @@ block main %}
           class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
         >
           <tr>
-            <th scope="col" class="px-4 py-3">Number</th>
-            <th scope="col" class="px-4 py-3">Name</th>
-            <th scope="col" class="px-4 py-3">Session</th>
+            <th scope="col" class="px-4 py-3 dark:text-white">Number</th>
+            <th scope="col" class="px-4 py-3 dark:text-white">Name</th>
+            <th scope="col" class="px-4 py-3 dark:text-white">Session</th>
           </tr>
         </thead>
         <tbody>

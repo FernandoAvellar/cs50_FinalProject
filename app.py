@@ -30,11 +30,16 @@ Session(app)
 db = SQL("sqlite:///database/database.db")
 
 
+@app.route("/login")
+def login():
+	return render_template("login.html")
+
+
 
 @app.route("/")
 @app.route("/index")
 def index():
-	return render_template("layout.html")
+	return render_template("login.html")
 
 
 
