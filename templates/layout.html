@@ -154,6 +154,62 @@
           </div>
         </div>
       </nav>
+      {% if get_flashed_messages(category_filter=["info"]) %}
+        <header>
+          <div data-dismissible="alert" class="relative block w-full p-4 mb-4 text-base leading-5 text-white bg-green-500 rounded-lg opacity-100 font-regular">
+                    {{ get_flashed_messages() | join(" ") }}
+                    <button data-dismissible-target="alert"
+                      class="!absolute  top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                      type="button"
+                      >
+                      <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          class="w-6 h-6"
+                          stroke-width="2"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18L18 6M6 6l12 12"
+                          ></path>
+                        </svg>
+                      </span>
+                    </button>
+          </div>
+        </header>
+      {% endif %}
+      {% if get_flashed_messages(category_filter=["error"]) %}
+        <header>
+          <div data-dismissible="alert" class="relative block w-full p-4 mb-4 text-base leading-5 text-white bg-red-500 rounded-lg opacity-100 font-regular">
+                    {{ get_flashed_messages() | join(" ") }}
+                    <button data-dismissible-target="alert"
+                      class="!absolute  top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                      type="button"
+                      >
+                      <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          class="w-6 h-6"
+                          stroke-width="2"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18L18 6M6 6l12 12"
+                          ></path>
+                        </svg>
+                      </span>
+                    </button>
+          </div>
+        </header>
+      {% endif %}
       <main>{% block main %}{% endblock %}</main>
       <footer
         class="bg-white rounded-lg shadow sm:flex sm:items-center sm:justify-between p-4 sm:p-6 xl:p-8 dark:bg-gray-800 antialiased"
@@ -253,6 +309,8 @@
         </div>
       </footer>
       <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+      <!-- https://www.material-tailwind.com/docs/html/alert -->
+      <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dismissible.js"></script>
       <script>
         // Script to deal with light/dark modes selection
         var themeToggleDarkIcon = document.getElementById(

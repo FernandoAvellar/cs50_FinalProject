@@ -36,9 +36,6 @@ db = SQL("sqlite:///database/database.db")
 @app.route("/index")
 @login_required
 def index():
-
-    flash('Logged in successfully.')
-
     return render_template("layout.html")
 
 
@@ -76,6 +73,7 @@ def login():
         if len(user_query) == 1 and check_password_hash(user_query[0]["hash"], password):
             # Remember which user has logged in
             session["user_id"] = user_query[0]["id"]
+            flash('Logged in successfully.', 'info')
             return redirect("/")
 
         # TODO: Falta validar a entrada de dados
