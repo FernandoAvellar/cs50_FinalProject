@@ -15,10 +15,12 @@
       name="name"
       placeholder="Music Name"
       type="text"
+      required
     />
     <select
       class="mx-auto w-auto border-solid border-2 border-gray-100 p-1 focus:outline-none dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
       name="session"
+      required
     >
       <option disabled selected>Session</option>
       {% for session in sessions %}
@@ -32,6 +34,7 @@
       placeholder="Music Sheet"
       rows="22"
       cols="100"
+      required
     ></textarea>
     <button
       class="md:col-span-2 mt-2 mb-4 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg md:text-lg md:px-6 md:py-2 text-center text-base px-4 py-2 w-full dark:bg-indigo-600

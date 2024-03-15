@@ -30,14 +30,14 @@
   </div>
 
   <div class="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
-    <form class="space-y-6" action="/login" method="POST">
+    <form class="space-y-4" action="/login" method="POST">
       <div>
         <label
           for="username"
           class="block text-center text-sm font-medium leading-6 text-gray-900 dark:text-white"
           >Username</label
         >
-        <div class="mt-1">
+        <div>
           <input
             id="username"
             name="username"
@@ -57,7 +57,7 @@
             >Password</label
           >
         </div>
-        <div class="mt-1">
+        <div>
           <input
             id="password"
             name="password"
@@ -76,7 +76,14 @@
         >
           Sign in
         </button>
-      </div>
+        <a href="/register">
+          <button
+            type="button"
+            class="flex w-full mt-4  justify-center rounded-md bg-red-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+          > Register
+          </button>
+        </a>
+      </div> 
     </form>
   </div>
 </div>

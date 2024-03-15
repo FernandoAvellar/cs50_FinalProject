@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session, flash
 from flask_session import Session
 from cs50 import SQL
 from werkzeug.security import check_password_hash, generate_password_hash
+from utilities import login_required
 
 # Configure lithurgical sessions in a catholic mass to sort sheet musics.
 SESSOES_DA_MISSA = {
@@ -31,24 +32,77 @@ Session(app)
 db = SQL("sqlite:///database/database.db")
 
 
-@app.route("/login")
-def login():
-    return render_template("login.html")
-
-
 @app.route("/")
 @app.route("/index")
+@login_required
 def index():
-    return render_template("login.html")
+
+    flash('Logged in successfully.')
+
+    return render_template("layout.html")
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == 'POST':
+        username = request.form.get("username")
+        password = request.form.get("password")
+        confirm_password = request.form.get("confirm_password")
+
+        # TODO: Falta validar a entrada de dados
+
+        # Insert new user in the database
+        db.execute("INSERT INTO users (username, hash) VALUES(?, ?)",
+                   username, generate_password_hash(password))
+        return redirect("login")
+
+    else:
+        return render_template("register.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+
+    # User reached route via POST (as by submitting a form via POST)
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        # Query database for username
+        user_query = db.execute(
+            "SELECT * FROM users WHERE username = ?", username)
+
+        # Ensure username exists and password is correct
+        if len(user_query) == 1 and check_password_hash(user_query[0]["hash"], password):
+            # Remember which user has logged in
+            session["user_id"] = user_query[0]["id"]
+            return redirect("/")
+
+        # TODO: Falta validar a entrada de dados
+
+        return redirect("/login")
+
+    else:
+        return render_template("login.html")
+
+
+@app.route("/logout")
+def logout():
+
+    # Forget any user_id and redirect to login page
+    session.clear()
+    return redirect("/login")
 
 
 @app.route("/list")
+@login_required
 def list():
     sheets = db.execute("SELECT * FROM cifras")
     return render_template("list.html", sheets=sheets)
 
 
 @app.route("/insert", methods=["GET", "POST"])
+@login_required
 def insert():
     if request.method == "POST":
         nome = request.form.get("name")
@@ -64,6 +118,7 @@ def insert():
 
 
 @app.route("/filtered_list", methods=["GET", "POST"])
+@login_required
 def filtered_list():
     selected_filters = []
     if request.method == "POST":
@@ -87,6 +142,7 @@ def filtered_list():
 
 
 @app.route("/generate", methods=["GET", "POST"])
+@login_required
 def generate():
     if request.method == "POST":
         input_list = request.form.get("list")
