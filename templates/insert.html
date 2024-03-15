@@ -1,6 +1,8 @@
-{% extends "layout.html" %} {% block title %} - Insert {% endblock %} {% block
-main %}
+{% extends "layout.html" %} 
 
+{% block title %} - Insert {% endblock %} 
+
+{% block main %}
 <form action="/insert" method="post" class="mt-4">
   <div
     class="md:grid w-4/5 md:grid-cols-2 gap-2 justify-items-center mx-auto lg:w-2/3"
@@ -20,7 +22,7 @@ main %}
     >
       <option disabled selected>Session</option>
       {% for session in sessions %}
-      <option value="{{session}}">{{session}}</option>
+        <option value="{{session}}">{{session}}</option>
       {% endfor %}
     </select>
     <textarea
@@ -39,5 +41,4 @@ main %}
     </button>
   </div>
 </form>
-
 {% endblock %}
