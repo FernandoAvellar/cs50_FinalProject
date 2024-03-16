@@ -112,7 +112,7 @@
             <ul
               class="flex flex-col bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-6 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-800 dark:border-gray-700"
             >
-              {% if session["user_id"] %}
+              {% if session['user_id'] %}
                 <li>
                   <a
                     href="/list"
@@ -128,6 +128,7 @@
                     >List by session</a
                   >
                 </li>
+                {% if session['username'] == 'admin' %}
                 <li>
                   <a
                     href="/insert"
@@ -135,6 +136,7 @@
                     >Insert</a
                   >
                 </li>
+                {% endif %}
                 <li>
                   <a
                     href="/generate"
@@ -154,7 +156,7 @@
           </div>
         </div>
       </nav>
-      {% if get_flashed_messages(category_filter=["info"]) %}
+      {% if get_flashed_messages(category_filter=['info']) %}
         <header>
           <div data-dismissible="alert" class="relative block w-full p-4 mb-4 text-base leading-5 text-white bg-green-500 rounded-lg opacity-100 font-regular">
                     {{ get_flashed_messages() | join(" ") }}

@@ -42,13 +42,19 @@ def index():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == 'POST':
-        username = request.form.get("username")
-        password = request.form.get("password")
-        confirm_password = request.form.get("confirm_password")
+        username = request.form.get('username')
+        password = request.form.get('password')
+        confirm_password = request.form.get('confirm_password')
 
-        # TODO: Falta validar a entrada de dados
+        if not (username and password and confirm_password):
+            flash('Please, fill all inputs!', 'error')
+            return redirect('/register')
 
-        # Insert new user in the database
+        if password != confirm_password:
+            flash('Password does not match', 'error')
+            return redirect('/register')
+
+        # Insert new user into the database
         db.execute("INSERT INTO users (username, hash) VALUES(?, ?)",
                    username, generate_password_hash(password))
         return redirect("login")
@@ -59,26 +65,33 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
-        username = request.form.get("username")
-        password = request.form.get("password")
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+        if not (username and password):
+            flash('Please, fill username and password', 'error')
+            return redirect('/login')
 
         # Query database for username
         user_query = db.execute(
             "SELECT * FROM users WHERE username = ?", username)
 
-        # Ensure username exists and password is correct
-        if len(user_query) == 1 and check_password_hash(user_query[0]["hash"], password):
+        if len(user_query) == 0:
+            flash('Invalid user', 'error')
+            return redirect("/login")
+
+        elif not check_password_hash(user_query[0]["hash"], password):
+            flash('Invalid password.', 'error')
+            return redirect("/login")
+
+        else:
             # Remember which user has logged in
             session["user_id"] = user_query[0]["id"]
+            session["username"] = user_query[0]["username"]
             flash('Logged in successfully.', 'info')
             return redirect("/")
-
-        # TODO: Falta validar a entrada de dados
-
-        return redirect("/login")
 
     else:
         return render_template("login.html")
@@ -86,9 +99,9 @@ def login():
 
 @app.route("/logout")
 def logout():
-
     # Forget any user_id and redirect to login page
     session.clear()
+    flash('Logged out successfully.', 'info')
     return redirect("/login")
 
 
@@ -107,11 +120,19 @@ def insert():
         sessao = request.form.get("session")
         cifra = request.form.get("music_sheet")
 
+        if not (nome and sessao and cifra):
+            flash('Please, fill all inputs!', 'error')
+            return redirect('/insert')
+
         db.execute(
             "INSERT INTO cifras (nome, sessao, cifra) VALUES(?, ?, ?)", nome, sessao, cifra)
 
-        return redirect('/')
+        return redirect('/list')
     else:
+        # allow /insert route only accesible to admin user.
+        if session["username"] != 'admin':
+            return redirect('/')
+
         return render_template("insert.html", sessions=SESSOES_DA_MISSA.values())
 
 
