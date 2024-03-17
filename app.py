@@ -182,5 +182,13 @@ def generate():
         return render_template("generate.html")
 
 
+@app.route('/delete/<int:id>')
+@login_required
+def delete(id):
+    db.execute("DELETE FROM cifras WHERE id = ?", id)
+    flash('Sheet music deleted successfully', 'info')
+    return render_template("list.html")
+
+
 if __name__ == '__main__':
     app.run(debug=True)
