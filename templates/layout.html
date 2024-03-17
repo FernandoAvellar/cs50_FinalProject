@@ -311,7 +311,6 @@
         </div>
       </footer>
       <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
-      <!-- https://www.material-tailwind.com/docs/html/alert -->
       <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dismissible.js"></script>
       <script>
         // Script to deal with light/dark modes selection
@@ -362,6 +361,24 @@
           }
         });
       </script>
+      <script>
+        window.onload = function() {
+            loadFileContent();
+        };
+
+        function loadFileContent() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        document.getElementById("file-content").value = xhr.responseText;
+                    } 
+                }
+            };
+            xhr.open('GET', '/static/cifras_selecionadas.txt', true);
+            xhr.send();
+        }
+      </script>      
     </div>
   </body>
 </html>

@@ -24,4 +24,11 @@
     </button>
   </div>
 </form>
+<textarea 
+  id="file-content"
+  class="mx-auto w-full lg:w-3/5 border-solid border-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700"
+  rows="25" 
+  readonly
+  src="{{ url_for('static', filename='cifras_selecionadas.txt') }}">
+</textarea> 
 {% endblock %}

@@ -4,6 +4,7 @@ from cs50 import SQL
 from werkzeug.security import check_password_hash, generate_password_hash
 from utilities import login_required
 
+
 # Configure lithurgical sessions in a catholic mass to sort sheet musics.
 SESSOES_DA_MISSA = {
     1:  "Aclamação",
@@ -166,9 +167,8 @@ def generate():
     if request.method == "POST":
         input_list = request.form.get("list")
         selected_sheet_music_list = input_list.split(',')
-        print(selected_sheet_music_list)
 
-        with open("cifras_selecionadas.txt", "w") as file:
+        with open("static/cifras_selecionadas.txt", "w") as file:
             for selected in selected_sheet_music_list:
                 selected = int(selected.strip())
                 query = db.execute(
@@ -176,8 +176,8 @@ def generate():
                 if len(query) != 0:
                     file.write(
                         f"{query[0]['sessao']}\n\nMúsica: {query[0]['nome']}\n\n{query[0]['cifra']}\n\n")
-
-        return redirect('/')
+        flash('Repertorie generated successfully.', 'info')
+        return redirect('/generate')
     else:
         return render_template("generate.html")
 
