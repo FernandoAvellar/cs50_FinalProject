@@ -2,4 +2,3 @@ node_modules/
 .venv/
 __pycache__
 flask_session
-cifras_selecionadas.txt

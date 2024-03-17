@@ -190,5 +190,38 @@ def delete(id):
     return render_template("list.html")
 
 
+@app.route('/edit/<int:id>')
+@login_required
+def edit_cifra(id):
+    if session["username"] != 'admin':
+        flash('User not authorize', 'error')
+        return redirect('/list')
+
+    cifra_data = db.execute("SELECT * FROM cifras WHERE id = ?", id)
+    return render_template('update.html', cifra_data=cifra_data[0], sessions=SESSOES_DA_MISSA.values())
+
+
+@app.route("/update/<int:id>", methods=["POST"])
+@login_required
+def update(id):
+    nome = request.form.get("name")
+    sessao = request.form.get("session")
+    cifra = request.form.get("music_sheet")
+
+    if not (nome and sessao and cifra):
+        flash('Please, fill all inputs!', 'error')
+        return redirect('/list')
+
+    # allow /update route only accesible to admin user.
+    if session["username"] != 'admin':
+        flash('User not authorize', 'error')
+        return redirect('/')
+
+    db.execute(
+        "UPDATE cifras SET nome = ?, sessao = ?, cifra = ? WHERE id = ?", nome, sessao, cifra, id)
+
+    return redirect('/list')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
