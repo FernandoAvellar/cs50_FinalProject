@@ -9,7 +9,7 @@
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
     <img
       class="mx-auto h-16 w-auto"
-      src="./static/header_icon.png"
+      src="{{url_for('static',filename='header_icon.png')}}"
       alt="Your Company"
     />
     <h2
@@ -24,7 +24,7 @@
       <div>
         <label
           for="username"
-          class="block text-left text-sm font-medium leading-6 text-gray-900 dark:text-white"
+          class="block text-center text-sm font-medium leading-6 text-gray-900 dark:text-white"
           >Username</label
         >
         <div class="mt-1">
@@ -44,7 +44,7 @@
         <div>
           <label
             for="password"
-            class="block text-left text-sm font-medium leading-6 text-gray-900 dark:text-white"
+            class="block text-center text-sm font-medium leading-6 text-gray-900 dark:text-white"
             >Password</label
           >
         </div>
@@ -65,7 +65,7 @@
         <div>
           <label
             for="confirm_password"
-            class="block text-left text-sm font-medium leading-6 text-gray-900 dark:text-white"
+            class="block text-center text-sm font-medium leading-6 text-gray-900 dark:text-white"
             >Confirm password</label
           >
         </div>

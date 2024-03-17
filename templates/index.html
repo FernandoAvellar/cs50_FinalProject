@@ -1,0 +1,19 @@
+{% extends "layout.html" %} 
+
+{% block title %} - Index {% endblock %} 
+
+{% block main %}
+<section class="">
+    <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+        <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Serving God can be less complicated</h2>
+            <p class="mb-4 text-gray-900 dark:text-white">Welcome to the best music tab management app for catholic music ministry. In this application you can register your sheet music, edit it and instantly generate the repertoire for your next catholic mass.</p>
+            <p class="text-gray-900 dark:text-white">At the service of God on behalf of God's people.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-6 mt-8">
+            <img class="w-full rounded-lg" src="{{url_for('static',filename='index_image_2.png')}}"alt="church image">
+            <img class="mt-6 w-full lg:mt-16 rounded-lg" src="{{url_for('static',filename='index_image_1.jpeg')}}" alt="musical note image">
+        </div>
+    </div>
+</section>
+{% endblock %}

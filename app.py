@@ -37,7 +37,7 @@ db = SQL("sqlite:///database/database.db")
 @app.route("/index")
 @login_required
 def index():
-    return render_template("layout.html")
+    return render_template("index.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
