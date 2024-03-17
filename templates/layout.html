@@ -364,6 +364,7 @@
       <script>
         window.onload = function() {
             loadFileContent();
+            addDeleteListener();
         };
 
         function loadFileContent() {
@@ -377,7 +378,21 @@
             };
             xhr.open('GET', '/static/cifras_selecionadas.txt', true);
             xhr.send();
-        }
+          }
+
+        function addDeleteListener() {
+          var deleteLinks = document.querySelectorAll('.delete-link');
+          deleteLinks.forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                var cifraId = link.getAttribute('data-cifra-id');
+                var confirmDelete = confirm("Are you sure you want to delete this sheet music?");
+                if (confirmDelete) {
+                    window.location.href = "/delete/" + cifraId;
+                }
+              });
+            });
+          }
       </script>      
     </div>
   </body>

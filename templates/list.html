@@ -26,7 +26,7 @@
               <td class="px-4 py-3">{{ sheet['nome'] }}</td>
               <td class="px-4 py-3">{{ sheet['sessao'] }}</td>
               {% if session['username'] == 'admin' %}
-              <td class="px-4 py-3"><a href="/delete/{{ sheet['id'] }}" class="flex justify-center"><img src="{{url_for('static',filename='trash.png')}}" class="size-5"></a></td>
+              <td class="px-4 py-3"><a href="#" class="delete-link flex justify-center" data-cifra-id="{{ sheet['id'] }}"><img src="{{url_for('static',filename='trash.png')}}" class="size-5"></a></td>
               {% endif %}
               <td
                 class="px-4 py-3 flex items-center justify-end dark:text-white"
