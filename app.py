@@ -35,7 +35,6 @@ db = SQL("sqlite:///database/database.db")
 
 @app.route("/")
 @app.route("/index")
-@login_required
 def index():
     return render_template("index.html")
 
@@ -103,7 +102,7 @@ def logout():
     # Forget any user_id and redirect to login page
     session.clear()
     flash('Logged out successfully.', 'info')
-    return redirect("/login")
+    return redirect("/index")
 
 
 @app.route("/list")
