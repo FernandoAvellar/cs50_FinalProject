@@ -87,7 +87,7 @@ function addDeleteListener() {
     link.addEventListener('click', function(event) {
       event.preventDefault();
       var cifraId = link.getAttribute('data-cifra-id');
-      var confirmDelete = confirm("Are you sure you want to delete this sheet music?");
+      var confirmDelete = confirm("Are you sure you want to DELETE this sheet music?");
       if (confirmDelete) {
         window.location.href = "/delete/" + cifraId;
       }
@@ -98,7 +98,7 @@ function addDeleteListener() {
     link.addEventListener('click', function(event) {
       event.preventDefault();
       var cifraId = link.getAttribute('data-cifra-id');
-      var confirmUpgrade = confirm("Are you sure you want to update this sheet music?");
+      var confirmUpgrade = confirm("Are you sure you want to UPDATE this sheet music?");
       if (confirmUpgrade) {
         window.location.href = "/edit/" + cifraId;
       }
