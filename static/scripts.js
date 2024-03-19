@@ -58,9 +58,9 @@ if (
 
 window.onload = function() {
   loadFileContent();
-  addDeleteListener();
+  addDeleteUpdateListener();
+  addShowSheetMusicPopup();
 };
-
 
 function loadFileContent() {
   var xhr = new XMLHttpRequest();
@@ -74,12 +74,20 @@ function loadFileContent() {
       }
     }
   };
+
+  // Abra a solicitação AJAX antes de definir os cabeçalhos
   xhr.open('GET', '/static/cifras_selecionadas.txt', true);
+
+  // Adicione os cabeçalhos de controle de cache (Assim evitamos cache do arquivo com as musicas geradas
+  xhr.setRequestHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+  xhr.setRequestHeader('Pragma', 'no-cache');
+  xhr.setRequestHeader('Expires', '-1');
+
   xhr.send();
 }
 
 
-function addDeleteListener() {
+function addDeleteUpdateListener() {
   var deleteLinks = document.querySelectorAll('.delete-link');
   var updateLinks = document.querySelectorAll('.update-link');
 
@@ -105,3 +113,35 @@ function addDeleteListener() {
     });
   });     
 }
+
+
+function addShowSheetMusicPopup() {
+  document.querySelectorAll('.name-cell').forEach(function(cell) {
+    cell.addEventListener('click', function() {
+      var cifraId = cell.getAttribute('data-cifra-id');
+      // Make AJAX request to get cifra content
+      fetch('/cifra/' + cifraId)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text(); // Retorna o conteúdo da resposta como texto
+        })
+        .then(data => {
+          // Display cifra content in popup
+          console.log(data);
+          document.getElementById('cifra-content').innerText = data;
+          document.getElementById('popup-container').classList.remove('hidden');
+          document.getElementById('close-popup').addEventListener('click', function() {
+              document.getElementById('popup-container').classList.add('hidden');
+          });
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    });
+  });
+};
+
+
+  

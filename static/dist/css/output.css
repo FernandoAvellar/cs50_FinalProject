@@ -1025,6 +1025,10 @@ select {
   height: 2.25rem;
 }
 
+.max-h-96 {
+  max-height: 24rem;
+}
+
 .max-h-\[32px\] {
   max-height: 32px;
 }
@@ -1261,6 +1265,10 @@ select {
 
 .overflow-x-auto {
   overflow-x: auto;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
 }
 
 .whitespace-nowrap {
@@ -1783,6 +1791,10 @@ select {
 
 .hover\:underline:hover {
   text-decoration-line: underline;
+}
+
+.hover\:decoration-solid:hover {
+  text-decoration-style: solid;
 }
 
 .focus\:z-10:focus {

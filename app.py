@@ -184,6 +184,10 @@ def generate():
 @app.route('/delete/<int:id>')
 @login_required
 def delete(id):
+    if session["username"] != 'admin':
+        flash('User not authorize', 'error')
+        return redirect('/index')
+
     db.execute("DELETE FROM cifras WHERE id = ?", id)
     flash('Sheet music deleted successfully', 'info')
     return render_template("list.html")
@@ -220,6 +224,14 @@ def update(id):
         "UPDATE cifras SET nome = ?, sessao = ?, cifra = ? WHERE id = ?", nome, sessao, cifra, id)
 
     return redirect('/list')
+
+
+@app.route('/cifra/<int:id>')
+@login_required
+def get_cifra(id):
+
+    cifra_data = db.execute("SELECT cifra FROM cifras WHERE id = ?", id)
+    return cifra_data[0]['cifra']
 
 
 if __name__ == '__main__':

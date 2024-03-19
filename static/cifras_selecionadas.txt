@@ -1,25 +1,90 @@
-Ato penitencial
+Geral
 
-Música: Senhor que sois o defensor dos pobres
+Música: Consagração à Nossa Senhora
 
-Am          Em                      F
-Senhor, que sois o defensor dos pobres,
-G                 Am
-tende piedade de nós.
-F       G                 Am
-Senhor, tende piedade de nós.
+[Intro]  F7M   Bb7M   C4   Bb7M 
 
-Am          Em                  F
-Cristo, que sois o refúgio dos fracos,
-G                 Am
-tende piedade de nós.
-F      G                  Am
-Cristo, tende piedade de nós.
+[Primeira Parte] 
+F7M
+Oh, minha Senhora
+         Am7
+E também minha Mãe
+Gm           C9
+Eu me ofereço
+             F                 Dm7
+Inteiramente todo a vós
+Gm     C7
+E em prova
+       Am7           Dm7
+Da minha devoção
+     Gm         C7                    F   Gm7  C7
+Eu hoje vos dou meu coração
 
-Am           Em                          F
-Senhor, que sois a esperança dos pecadores,
-G                 Am
-tende piedade de nós.
-F      G                  Am
-Senhor, tende piedade de nós.
+[Refrão] 
+       F
+Consagro a vós meus olhos
+             Am7
+Meus ouvidos, minha boca
+Gm              C7
+Tudo o que sou
+              F                Am7  Dm7
+Desejo que a vós perten__ça
+   Gm               C7
+Incomparável Mãe
+        Am7             Dm7
+Guardai-me, defendei-me
+           Gm7
+Como filho
+               C                     A4  A  D7
+Muito amado vossa amém!
+D7/F#        Gm
+       Como filho
+               C                  Bbm 
+Muito amado vossa amém!
+
+
+[Primeira Parte] 
+
+A7M
+Oh, minha Senhora
+      C#m7
+E também minha Mãe
+Bm        E9
+Eu me ofereço
+        A  C#7       F#m7
+Inteiramente todo a vós
+Bm     E7(4/9)
+E em prova
+    C#m7      F#m7
+Da minha devoção
+    Bm       E7(4/9)     A  Bm7  E7
+Eu hoje vos dou meu coração
+
+[Refrão] 
+
+    A
+Consagro a vós meus olhos
+        C#m7
+Meus ouvidos, minha boca
+ Bm         E7(4/9)
+Tudo o que sou
+         A  A/G       F#m7  F#7
+Desejo que  a vós pertença
+   Bm         E7(4/9)
+Incomparável Mãe
+      C#m7        F#m7
+Guardai-me, defendei-me
+      Bm7
+Como filho
+          E           C#7(4)  C#
+E propriedade vossa amém!
+      Bm
+Como coisa
+          E           F 
+E propriedade vossa amém!
+
+[Final] F  Bb/F  C/F  F4
+           F  Bb/F  C/F  F4
+           F  Bb/F  C/F  F4 
+           F  Bb/F  C/F  F4
 
