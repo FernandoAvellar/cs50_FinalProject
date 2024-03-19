@@ -1025,10 +1025,6 @@ select {
   height: 2.25rem;
 }
 
-.h-full {
-  height: 100%;
-}
-
 .max-h-\[32px\] {
   max-height: 32px;
 }
