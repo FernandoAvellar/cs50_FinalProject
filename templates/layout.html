@@ -16,12 +16,8 @@
   </head>
 
   <body>
-    <div
-      class="container text-center mx-auto items-center bg-gray-50 dark:bg-gray-700"
-    >
-      <nav
-        class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800"
-      >
+    <div class="container text-center mx-auto items-center bg-gray-50 dark:bg-gray-700">
+      <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
         <div class="flex flex-wrap justify-between items-center mx-auto">
           <a href="/" class="flex items-center">
             <img
@@ -67,8 +63,8 @@
             </button>
           </div>
           {% if session["user_id"] %}
-            <div class="flex md:hidden w-full mt-2">
-              <button
+          <div class="flex md:hidden mt-2">
+            <button
                 data-collapse-toggle="navbar-cta"
                 type="button"
                 class="mb-1 inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -89,14 +85,12 @@
                     clip-rule="evenodd"
                   ></path>
                 </svg>
-              </button>
-            </div>
+            </button>
+          </div>
           {% endif %}
-
           <div
             class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1"
-            id="navbar-cta"
-          >
+            id="navbar-cta">
             <ul
               class="flex flex-col bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-6 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 dark:border-gray-700"
             >
@@ -145,60 +139,60 @@
         </div>
       </nav>
       {% if get_flashed_messages(category_filter=['info']) %}
-        <header>
-          <div data-dismissible="alert" class="relative block w-full p-4 mb-4 text-base leading-5 text-white bg-green-500 rounded-lg opacity-100 font-regular">
-                    {{ get_flashed_messages() | join(" ") }}
-                    <button data-dismissible-target="alert"
-                      class="!absolute  top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                      type="button"
-                      >
-                      <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          class="w-6 h-6"
-                          stroke-width="2"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M6 18L18 6M6 6l12 12"
-                          ></path>
-                        </svg>
-                      </span>
-                    </button>
-          </div>
-        </header>
+      <header>
+        <div data-dismissible="alert" class="relative block w-full p-4 mb-4 text-base leading-5 text-white bg-green-500 rounded-lg opacity-100 font-regular">
+           {{ get_flashed_messages() | join(" ") }}
+           <button data-dismissible-target="alert"
+             class="!absolute  top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+             type="button"
+             >
+             <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+               <svg
+                 xmlns="http://www.w3.org/2000/svg"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke="currentColor"
+                 class="w-6 h-6"
+                 stroke-width="2"
+               >
+                 <path
+                   stroke-linecap="round"
+                   stroke-linejoin="round"
+                   d="M6 18L18 6M6 6l12 12"
+                 ></path>
+               </svg>
+             </span>
+           </button>
+        </div>
+      </header>
       {% endif %}
       {% if get_flashed_messages(category_filter=["error"]) %}
-        <header>
-          <div data-dismissible="alert" class="relative block w-full p-4 mb-4 text-base leading-5 text-white bg-red-500 rounded-lg opacity-100 font-regular">
-                    {{ get_flashed_messages() | join(" ") }}
-                    <button data-dismissible-target="alert"
-                      class="!absolute  top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                      type="button"
-                      >
-                      <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          class="w-6 h-6"
-                          stroke-width="2"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M6 18L18 6M6 6l12 12"
-                          ></path>
-                        </svg>
-                      </span>
-                    </button>
-          </div>
-        </header>
+      <header>
+        <div data-dismissible="alert" class="relative block w-full p-4 mb-4 text-base leading-5 text-white bg-red-500 rounded-lg opacity-100 font-regular">
+           {{ get_flashed_messages() | join(" ") }}
+           <button data-dismissible-target="alert"
+             class="!absolute  top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+             type="button"
+             >
+             <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+               <svg
+                 xmlns="http://www.w3.org/2000/svg"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke="currentColor"
+                 class="w-6 h-6"
+                 stroke-width="2"
+               >
+                 <path
+                   stroke-linecap="round"
+                   stroke-linejoin="round"
+                   d="M6 18L18 6M6 6l12 12"
+                 ></path>
+               </svg>
+             </span>
+           </button>
+        </div>
+      </header>
       {% endif %}
       <main>{% block main %}{% endblock %}</main>
       <footer

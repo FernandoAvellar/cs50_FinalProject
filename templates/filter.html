@@ -62,7 +62,8 @@
         {% endfor %}
       </ul>
       <button
-        class="col-span-2 mt-4 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg px-4 py-2 text-center"
+        class="col-span-2 mt-4 text-white bg-emerald-500 hover:bg-emerald-400 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-lg px-4 py-2 text-center dark:bg-indigo-600
+                    dark:hover:bg-indigo-500 dark:focus-visible:outline-indigo-600"
         type="submit"
       >
         Filter
@@ -86,13 +87,21 @@
           {% for sheet in sheets %}
           <tr class="border-b dark:border-gray-700">
             <td class="px-4 py-3">{{ sheet['id'] }}</td>
-            <td class="px-4 py-3">{{ sheet['nome'] }}</td>
+            <td class="name-cell px-4 py-3" data-cifra-id="{{ sheet['id'] }}">{{ sheet['nome'] }}</td>
             <td class="px-4 py-3">{{ sheet['sessao'] }}</td>
             <td class="px-4 py-3 flex items-center justify-end"></td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
+    </div>
+    <!-- Popup container -->
+    <div id="popup-container" class="hidden fixed top-0 w-fill justify-center items-center">
+      <div class="text-white bg-gray-800 p-4 rounded-lg border-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">
+        <h2 class="text-lg font-semibold mb-2">Sheet Music</h2>
+        <div id="cifra-content" class="overflow-y-auto max-h-96"></div>
+        <button id="close-popup" class="mt-4 px-3 py-1.5 text-white rounded-md bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium text-md text-center dark:bg-indigo-600">Close</button>
+      </div>
     </div>
   </div>
 </section>

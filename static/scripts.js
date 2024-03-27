@@ -1,60 +1,49 @@
-// Script to ativar classe dark do tailwind de acordo com a preferência do usuário ou do navegador
-if (
-    localStorage.getItem("color-theme") === "dark" ||
+//Script to activate tailwind dark class according user or browser preference
+if (localStorage.getItem("color-theme") === "dark" ||
   (!("color-theme" in localStorage) &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches)
-) {
-  document.documentElement.classList.add("dark");
+    window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+      document.documentElement.classList.add("dark");
 } else {
-  document.documentElement.classList.remove("dark");
+      document.documentElement.classList.remove("dark");
 }
 
 // Script to deal with light/dark modes selection
-    var themeToggleDarkIcon = document.getElementById(
-        "theme-toggle-dark-icon"
-    );
-    var themeToggleLightIcon = document.getElementById(
-        "theme-toggle-light-icon"
-    );
-
-    // Change the icons inside the button based on previous settings
-    if (localStorage.getItem("color-theme") === "dark" ||
-        (!("color-theme" in localStorage) &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches)
-        ) {
+var themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
+var themeToggleLightIcon = document.getElementById("theme-toggle-light-icon");
+// Change the icons inside the button based on previous settings
+if (localStorage.getItem("color-theme") === "dark" ||
+    (!("color-theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)) {
           themeToggleLightIcon.classList.remove("hidden");
-        } else {
-          themeToggleDarkIcon.classList.remove("hidden");
-        }
-
-    var themeToggleBtn = document.getElementById("theme-toggle");
-
-    themeToggleBtn.addEventListener("click", function () {
-        // toggle icons inside button
-        themeToggleDarkIcon.classList.toggle("hidden");
-        themeToggleLightIcon.classList.toggle("hidden");
-
-        // if set via local storage previously
-    if (localStorage.getItem("color-theme")) {
-        if (localStorage.getItem("color-theme") === "light") {
-              document.documentElement.classList.add("dark");
-              localStorage.setItem("color-theme", "dark");
-        } else {
-            document.documentElement.classList.remove("dark");
-            localStorage.setItem("color-theme", "light");
-        }
-
-        // if NOT set via local storage previously
     } else {
-        if (document.documentElement.classList.contains("dark")) {
-            document.documentElement.classList.remove("dark");
-            localStorage.setItem("color-theme", "light");
-        } else {
-            document.documentElement.classList.add("dark");
-            localStorage.setItem("color-theme", "dark");
-            }
+          themeToggleDarkIcon.classList.remove("hidden");
+    }
+
+var themeToggleBtn = document.getElementById("theme-toggle");
+    themeToggleBtn.addEventListener("click", function () {
+      themeToggleDarkIcon.classList.toggle("hidden");
+      themeToggleLightIcon.classList.toggle("hidden");
+
+// if set via local storage previously
+if (localStorage.getItem("color-theme")) {
+    if (localStorage.getItem("color-theme") === "light") {
+          document.documentElement.classList.add("dark");
+          localStorage.setItem("color-theme", "dark");
+    } else {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("color-theme", "light");
+    }
+// if NOT set via local storage previously
+} else {
+    if (document.documentElement.classList.contains("dark")) {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("color-theme", "light");
+    } else {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("color-theme", "dark");
         }
-    });
+    }
+  });
 
 window.onload = function() {
   loadFileContent();
@@ -74,15 +63,11 @@ function loadFileContent() {
       }
     }
   };
-
-  // Abra a solicitação AJAX antes de definir os cabeçalhos
   xhr.open('GET', '/static/cifras_selecionadas.txt', true);
-
-  // Adicione os cabeçalhos de controle de cache (Assim evitamos cache do arquivo com as musicas geradas
+  // Adicione os cabeçalhos de controle de cache
   xhr.setRequestHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
   xhr.setRequestHeader('Pragma', 'no-cache');
   xhr.setRequestHeader('Expires', '-1');
-
   xhr.send();
 }
 
@@ -125,11 +110,10 @@ function addShowSheetMusicPopup() {
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
-          return response.text(); // Retorna o conteúdo da resposta como texto
+          return response.text();
         })
         .then(data => {
           // Display cifra content in popup
-          console.log(data);
           document.getElementById('cifra-content').innerText = data;
           document.getElementById('popup-container').classList.remove('hidden');
           document.getElementById('close-popup').addEventListener('click', function() {
@@ -142,6 +126,4 @@ function addShowSheetMusicPopup() {
     });
   });
 };
-
-
   

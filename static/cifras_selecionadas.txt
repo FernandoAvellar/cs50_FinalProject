@@ -1,90 +1,80 @@
-Geral
+Saída
 
-Música: Consagração à Nossa Senhora
+Música: Espírito, enche a minha vida
 
-[Intro]  F7M   Bb7M   C4   Bb7M 
-
-[Primeira Parte] 
-F7M
-Oh, minha Senhora
-         Am7
-E também minha Mãe
-Gm           C9
-Eu me ofereço
-             F                 Dm7
-Inteiramente todo a vós
-Gm     C7
-E em prova
-       Am7           Dm7
-Da minha devoção
-     Gm         C7                    F   Gm7  C7
-Eu hoje vos dou meu coração
-
-[Refrão] 
-       F
-Consagro a vós meus olhos
-             Am7
-Meus ouvidos, minha boca
-Gm              C7
-Tudo o que sou
-              F                Am7  Dm7
-Desejo que a vós perten__ça
-   Gm               C7
-Incomparável Mãe
-        Am7             Dm7
-Guardai-me, defendei-me
-           Gm7
-Como filho
-               C                     A4  A  D7
-Muito amado vossa amém!
-D7/F#        Gm
-       Como filho
-               C                  Bbm 
-Muito amado vossa amém!
+""C           F                    F/G  Am                   Em
+Espírito, enche minha vida, enche-me com teu poder,
+  F                     C                  F      F/G                 C
+pois de Ti eu quero ser, Espírito, enche o meu ser (BIS)
 
 
-[Primeira Parte] 
+F                   G                    C G/B Am   F             G         Am
+As minhas mãos eu quero le...van....tar e em louvor te adorar
+ F              G                   C   G/B   Am      F            G       C
+Meu coração eu quero de...rra.....mar, diante do Teu altar""
 
-A7M
-Oh, minha Senhora
-      C#m7
-E também minha Mãe
-Bm        E9
-Eu me ofereço
-        A  C#7       F#m7
-Inteiramente todo a vós
-Bm     E7(4/9)
-E em prova
-    C#m7      F#m7
-Da minha devoção
-    Bm       E7(4/9)     A  Bm7  E7
-Eu hoje vos dou meu coração
+Ato penitencial
 
-[Refrão] 
+Música: Invocações após ato rezado
 
-    A
-Consagro a vós meus olhos
-        C#m7
-Meus ouvidos, minha boca
- Bm         E7(4/9)
-Tudo o que sou
-         A  A/G       F#m7  F#7
-Desejo que  a vós pertença
-   Bm         E7(4/9)
-Incomparável Mãe
-      C#m7        F#m7
-Guardai-me, defendei-me
-      Bm7
-Como filho
-          E           C#7(4)  C#
-E propriedade vossa amém!
-      Bm
-Como coisa
-          E           F 
-E propriedade vossa amém!
+Intro (EM    Bm   Am   Em)
 
-[Final] F  Bb/F  C/F  F4
-           F  Bb/F  C/F  F4
-           F  Bb/F  C/F  F4 
-           F  Bb/F  C/F  F4
+   Em    Bm      Am7     Em
+Senhor, tende piedade de nós!
+   Em    Bm      Am7     Em
+Senhor, tende piedade de nós!
+
+ Em     Bm       Am7      Bm
+Cristo, tende piedade de nós!
+Em     Bm       Am7      Bm
+Cristo, tende piedade de nós!
+
+   Em    Bm      Am7     Em
+Senhor, tende piedade de nós!
+   Em    Bm      Am7     Em
+Senhor, tende piedade de nós!
+
+Ofertório
+
+Música: Se benditos, Senhor, para sempre
+
+[Intro] Cm   Fm   G   Cm
+
+       Cm                 Fm
+Sê bendito, Senhor para sempre
+        G                    Cm
+Pelos frutos das nossas jornadas
+      C7                Fm
+Repartidos na mesa do reino
+     Cm     D       G
+Anunciam a paz almejada
+
+[Refrão]
+    Cm C7      Fm
+Senhor     da vida
+   Bb               Eb G
+Tu és a nossa salvação
+         C7            Fm
+Ao prepararmos a Tua mesa
+    G                     Cm
+Em Ti buscamos ressurreição
+
+       Cm                Fm
+Sê bendito, Senhor para sempre
+       G                   Cm
+Pelos mares, os rios e as fontes
+       C7              Fm
+Nos recordam a Tua justiça
+         Cm         D        G
+Que nos levam a um novo horizonte
+
+
+       Cm                Fm
+Sê bendito, Senhor para sempre
+       G                      Cm
+Pelas bênçãos qual chuva torrente
+      C7                  Fm
+Tu fecundas o chão desta vida
+       Cm       D      G
+Que abriga uma nova semente
 
