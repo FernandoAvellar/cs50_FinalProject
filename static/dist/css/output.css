@@ -2295,10 +2295,6 @@ select {
     width: 60%;
   }
 
-  .lg\:w-auto {
-    width: auto;
-  }
-
   .lg\:w-fit {
     width: -moz-fit-content;
     width: fit-content;

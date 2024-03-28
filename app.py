@@ -126,7 +126,7 @@ def insert():
 
         db.execute(
             "INSERT INTO cifras (nome, sessao, cifra) VALUES(?, ?, ?)", nome, sessao, cifra)
-
+        flash('New sheet music inserted!', 'info')
         return redirect('/list')
     else:
         # allow /insert route only accesible to admin user.
@@ -190,7 +190,7 @@ def delete(id):
 
     db.execute("DELETE FROM cifras WHERE id = ?", id)
     flash('Sheet music deleted successfully', 'info')
-    return render_template("list.html")
+    return redirect('/list')
 
 
 @app.route('/edit/<int:id>')
@@ -222,6 +222,7 @@ def update(id):
 
     db.execute(
         "UPDATE cifras SET nome = ?, sessao = ?, cifra = ? WHERE id = ?", nome, sessao, cifra, id)
+    flash('Sheet music updated successfully', 'info')
 
     return redirect('/list')
 
