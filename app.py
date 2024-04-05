@@ -108,7 +108,8 @@ def logout():
 @app.route("/list")
 @login_required
 def list():
-    sheets = db.execute("SELECT * FROM cifras")
+    sheets = db.execute(
+        "SELECT * FROM cifras ORDER BY REPLACE(nome, 'Ó', 'O') COLLATE NOCASE;")
     return render_template("list.html", sheets=sheets)
 
 
@@ -150,13 +151,15 @@ def filtered_list():
             ','.join(f"{elemento}" for elemento in selected_filters)
             '('.join(f"str_selec_filters)")
             sheets = db.execute(
-                "SELECT * FROM cifras WHERE sessao in (?)", selected_filters)
+                "SELECT * FROM cifras WHERE sessao IN (?) ORDER BY REPLACE(nome, 'Ó', 'O');", selected_filters)
         else:
-            sheets = db.execute("SELECT * FROM cifras")
+            sheets = db.execute(
+                "SELECT * FROM cifras ORDER BY REPLACE(nome, 'Ó', 'O') COLLATE NOCASE;")
 
         return render_template("filter.html", sheets=sheets, sessions=SESSOES_DA_MISSA.values())
     else:
-        sheets = db.execute("SELECT * FROM cifras")
+        sheets = db.execute(
+            "SELECT * FROM cifras ORDER BY REPLACE(nome, 'Ó', 'O') COLLATE NOCASE;")
         return render_template("filter.html", sheets=sheets, sessions=SESSOES_DA_MISSA.values())
 
 
