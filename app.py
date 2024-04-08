@@ -39,30 +39,6 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/register", methods=["GET", "POST"])
-def register():
-    if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
-        confirm_password = request.form.get('confirm_password')
-
-        if not (username and password and confirm_password):
-            flash('Please, fill all inputs!', 'error')
-            return redirect('/register')
-
-        if password != confirm_password:
-            flash('Password does not match', 'error')
-            return redirect('/register')
-
-        # Insert new user into the database
-        db.execute("INSERT INTO users (username, hash) VALUES(?, ?)",
-                   username, generate_password_hash(password))
-        return redirect("login")
-
-    else:
-        return render_template("register.html")
-
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     # User reached route via POST (as by submitting a form via POST)
@@ -103,6 +79,66 @@ def logout():
     session.clear()
     flash('Logged out successfully.', 'info')
     return redirect("/index")
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        confirm_password = request.form.get('confirm_password')
+
+        if not (username and password and confirm_password):
+            flash('Please, fill all inputs!', 'error')
+            return redirect('/register')
+
+        if password != confirm_password:
+            flash('Password does not match', 'error')
+            return redirect('/register')
+
+        # Insert new user into the database
+        db.execute("INSERT INTO users (username, hash) VALUES(?, ?)",
+                   username, generate_password_hash(password))
+        return redirect("login")
+
+    else:
+        return render_template("register.html")
+
+
+@app.route("/change_password", methods=["GET", "POST"])
+def change_password():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        old_password = request.form.get('old_password')
+        new_password = request.form.get('new_password')
+        confirm_password = request.form.get('confirm_password')
+
+        if not (username and old_password and new_password and confirm_password):
+            flash('Please, fill all inputs!', 'error')
+            return redirect('/change_password')
+
+        if new_password != confirm_password:
+            flash('New password does not match', 'error')
+            return redirect('/change_password')
+
+        # Confirm if user exists an old password is correct
+        user_query = db.execute(
+            "SELECT * FROM users WHERE username = ?", username)
+        if len(user_query) == 0:
+            flash('Invalid user', 'error')
+            return redirect("/change_password")
+        elif not check_password_hash(user_query[0]["hash"], old_password):
+            flash('Invalid old password.', 'error')
+            return redirect("/change_password")
+
+        # Update user password into the database
+        db.execute(
+            "UPDATE users SET hash = ? WHERE username = ?", generate_password_hash(new_password), username)
+        flash('Password updated.', 'info')
+        return redirect("login")
+
+    else:
+        return render_template("change_password.html")
 
 
 @app.route("/list")
